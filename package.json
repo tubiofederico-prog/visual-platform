@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
     "@vitejs/plugin-react": "^4.7.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

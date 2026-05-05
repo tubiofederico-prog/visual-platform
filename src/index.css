@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+body {
+  @apply bg-slate-950 text-white;
+}
+
+.glass-effect {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent;
+}
+
+.card {
+  @apply bg-slate-900 border border-slate-800 rounded-lg p-6 hover:border-slate-700 transition-all duration-300;
+}
+
+.btn-primary {
+  @apply px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-lg font-semibold border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white bg-transparent transition-all duration-300;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 150, 255, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 150, 255, 0.6); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}

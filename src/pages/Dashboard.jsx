@@ -1,5 +1,5 @@
 import { familyData, dailyRoutine, alerts } from '../data/mockData'
-import { MessageCircle, Clock, AlertCircle, Check, Heart, Sparkles, Users, BarChart3 } from 'lucide-react'
+import { MessageCircle, Clock, AlertCircle, Check, Heart, Sparkles, Users, BarChart3, Trophy } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Dashboard({ setCurrentPage, addToast }) {
@@ -85,7 +85,7 @@ export default function Dashboard({ setCurrentPage, addToast }) {
         {/* Special Modes */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Modos especiales</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <button
               onClick={() => {
                 setCurrentPage('caregivers')
@@ -117,6 +117,23 @@ export default function Dashboard({ setCurrentPage, addToast }) {
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-1">Resumen Diario</h3>
                 <p className="text-sm text-gray-600">Análisis y recomendaciones</p>
+              </div>
+            </button>
+
+            <button
+              onClick={() => {
+                setCurrentPage('achievements')
+                addToast('Logros cargados', 'success')
+              }}
+              className="group relative card overflow-hidden border-2 border-yellow-200"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                  <Trophy className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">Logros</h3>
+                <p className="text-sm text-gray-600">Desafíos y premios</p>
               </div>
             </button>
           </div>

@@ -10,6 +10,7 @@ import Alerts from './pages/Alerts'
 import Settings from './pages/Settings'
 import CaregiversMode from './pages/CaregiversMode'
 import DailySummary from './pages/DailySummary'
+import Achievements from './pages/Achievements'
 import { useToast } from './hooks/useToast'
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
         return <CaregiversMode setCurrentPage={setCurrentPage} addToast={addToast} />
       case 'summary':
         return <DailySummary />
+      case 'achievements':
+        return <Achievements />
       default:
         return <Dashboard setCurrentPage={setCurrentPage} addToast={addToast} />
     }

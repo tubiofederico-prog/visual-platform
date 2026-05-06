@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navigation from './components/Navigation'
 import ToastContainer from './components/ToastContainer'
+import SearchModal from './components/SearchModal'
 import Dashboard from './pages/Dashboard'
 import Chat from './pages/Chat'
 import Rules from './pages/Rules'
@@ -12,10 +13,12 @@ import CaregiversMode from './pages/CaregiversMode'
 import DailySummary from './pages/DailySummary'
 import Achievements from './pages/Achievements'
 import { useToast } from './hooks/useToast'
+import { useSearch } from './hooks/useSearch'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard')
   const { toasts, addToast } = useToast()
+  const { isOpen: isSearchOpen, setIsOpen: setSearchOpen } = useSearch()
 
   const renderPage = () => {
     switch (currentPage) {
@@ -46,8 +49,9 @@ function App() {
 
   return (
     <div className="bg-white min-h-screen">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} onSearchClick={() => setSearchOpen(true)} />
       <ToastContainer toasts={toasts} />
+      <SearchModal isOpen={isSearchOpen} onClose={() => setSearchOpen(false)} setCurrentPage={setCurrentPage} />
       {renderPage()}
     </div>
   )

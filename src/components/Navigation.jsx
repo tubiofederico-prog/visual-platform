@@ -1,7 +1,7 @@
-import { Home, MessageCircle, Users, BookOpen, AlertCircle, Settings, Heart, Sparkles } from 'lucide-react'
+import { Home, MessageCircle, Users, BookOpen, AlertCircle, Settings, Heart, Sparkles, Search } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Navigation({ currentPage, setCurrentPage }) {
+export default function Navigation({ currentPage, setCurrentPage, onSearchClick }) {
   const navItems = [
     { id: 'dashboard', label: 'Inicio', icon: Home },
     { id: 'chat', label: 'Chat IA', icon: MessageCircle },
@@ -24,6 +24,16 @@ export default function Navigation({ currentPage, setCurrentPage }) {
             <p className="text-xs text-gray-600">Privado & Seguro</p>
           </div>
         </div>
+
+        {/* Search Button */}
+        <button
+          onClick={onSearchClick}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl mb-4 bg-white/50 hover:bg-white transition border-2 border-gray-200 text-gray-600 hover:text-gray-800 font-medium text-sm"
+        >
+          <Search className="w-5 h-5" />
+          <span>Buscar...</span>
+          <span className="ml-auto text-xs text-gray-400">⌘K</span>
+        </button>
 
         <nav className="flex-1 space-y-2">
           {navItems.map(({ id, label, icon: Icon }) => (

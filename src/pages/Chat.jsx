@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { chatExamples } from '../data/mockData'
-import { Send, Phone, Heart } from 'lucide-react'
+import { Send, Phone, Heart, Loader } from 'lucide-react'
+import { chatWithAI } from '../services/openaiService'
 
 export default function Chat({ addToast }) {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const quickQuestions = [
     "¿Puede mirar YouTube?",
@@ -13,21 +15,27 @@ export default function Chat({ addToast }) {
     "¿A qué hora se baña?"
   ]
 
-  const handleSendMessage = (question) => {
+  const handleSendMessage = async (question) => {
     setMessages([...messages, { type: 'user', text: question }])
     setInput('')
+    setLoading(true)
 
-    setTimeout(() => {
-      const example = chatExamples.find(e => e.question === question)
-      if (example) {
-        setMessages(prev => [...prev, {
-          type: 'ai',
-          answer: example.answer,
-          rule: example.rule,
-          alternative: example.alternative
-        }])
-      }
-    }, 300)
+    try {
+      const response = await chatWithAI(question)
+      setMessages(prev => [...prev, {
+        type: 'ai',
+        answer: response.answer,
+        rule: response.rule,
+        alternative: response.alternative,
+        source: response.source
+      }])
+      addToast('Respuesta recibida ✓', 'success')
+    } catch (error) {
+      console.error('Error:', error)
+      addToast('Error al procesar la pregunta', 'error')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -40,6 +48,13 @@ export default function Chat({ addToast }) {
 
       {/* Chat Area */}
       <main className="flex-1 overflow-y-auto p-6 max-w-4xl mx-auto w-full">
+        {loading && messages.length > 0 && (
+          <div className="text-center py-4">
+            <Loader className="w-5 h-5 animate-spin mx-auto text-blue-500" />
+            <p className="text-sm text-gray-600 mt-2">Procesando tu pregunta...</p>
+          </div>
+        )}
+
         {messages.length === 0 ? (
           <div className="text-center py-12">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -85,13 +100,18 @@ export default function Chat({ addToast }) {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => addToast('Notificación enviada a los padres ✓', 'success')}
-                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium hover:bg-blue-50 px-3 py-2 rounded-lg transition"
-                    >
-                      <Heart className="w-4 h-4" />
-                      Avisar a los padres
-                    </button>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        onClick={() => addToast('Notificación enviada a los padres ✓', 'success')}
+                        className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium hover:bg-blue-50 px-3 py-2 rounded-lg transition"
+                      >
+                        <Heart className="w-4 h-4" />
+                        Avisar a los padres
+                      </button>
+                      <span className={`text-xs px-2 py-1 rounded-full ${msg.source === 'openai' ? 'bg-purple-100 text-purple-700 font-semibold' : 'bg-gray-100 text-gray-600'}`}>
+                        {msg.source === 'openai' ? '🤖 IA Real' : '💾 Sistema'}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>

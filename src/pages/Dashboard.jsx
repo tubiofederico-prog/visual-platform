@@ -14,12 +14,12 @@ export default function Dashboard({ setCurrentPage, addToast }) {
   const pendingAlerts = alerts.filter(a => !a.read).length
 
   return (
-    <div className="md:ml-64 mb-20 md:mb-0 bg-gradient-to-br from-white via-blue-50 to-purple-50">
+    <div className="md:ml-64 mb-20 md:mb-0 bg-gradient-to-br from-white via-red-50 to-rose-50">
       {/* Header */}
       <header className="backdrop-blur-xl bg-white/70 border-b border-white/50 p-8 sticky top-0 z-40">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-2 mb-2">
-            <Sparkles className="w-6 h-6 text-blue-500" />
+            <Sparkles className="w-6 h-6 text-red-500" />
             <h1 className="text-4xl font-bold text-gradient">Hola, Familia García</h1>
           </div>
           <p className="text-gray-600 mt-2">Casa principal • Jueves, 5 de mayo</p>
@@ -32,9 +32,9 @@ export default function Dashboard({ setCurrentPage, addToast }) {
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Accesos rápidos</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <button onClick={() => setCurrentPage('chat')} className="group relative card overflow-hidden hover:shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <MessageCircle className="w-6 h-6 text-white" />
                 </div>
                 <p className="font-semibold text-gray-800">Preguntar IA</p>
@@ -43,9 +43,9 @@ export default function Dashboard({ setCurrentPage, addToast }) {
             </button>
 
             <button onClick={() => setCurrentPage('rules')} className="group relative card overflow-hidden hover:shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <p className="text-xl">📋</p>
                 </div>
                 <p className="font-semibold text-gray-800">Reglas</p>
@@ -54,9 +54,9 @@ export default function Dashboard({ setCurrentPage, addToast }) {
             </button>
 
             <button onClick={() => setCurrentPage('routines')} className="group relative card overflow-hidden hover:shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Clock className="w-6 h-6 text-white" />
                 </div>
                 <p className="font-semibold text-gray-800">Rutinas</p>
@@ -65,9 +65,9 @@ export default function Dashboard({ setCurrentPage, addToast }) {
             </button>
 
             <button onClick={() => setCurrentPage('alerts')} className="group relative card overflow-hidden hover:shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-700/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform relative">
                   <AlertCircle className="w-6 h-6 text-white" />
                   {pendingAlerts > 0 && (
                     <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold animate-pulse">
@@ -91,11 +91,11 @@ export default function Dashboard({ setCurrentPage, addToast }) {
                 setCurrentPage('caregivers')
                 addToast('Bienvenido al Modo Cuidador', 'success')
               }}
-              className="group relative card overflow-hidden border-2 border-purple-200"
+              className="group relative card overflow-hidden border-2 border-red-200"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
                   <Users className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-1">Modo Cuidador</h3>
@@ -108,11 +108,11 @@ export default function Dashboard({ setCurrentPage, addToast }) {
                 setCurrentPage('summary')
                 addToast('Resumen diario cargado', 'success')
               }}
-              className="group relative card overflow-hidden border-2 border-emerald-200"
+              className="group relative card overflow-hidden border-2 border-red-200"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-1">Resumen Diario</h3>
@@ -125,11 +125,11 @@ export default function Dashboard({ setCurrentPage, addToast }) {
                 setCurrentPage('achievements')
                 addToast('Logros cargados', 'success')
               }}
-              className="group relative card overflow-hidden border-2 border-yellow-200"
+              className="group relative card overflow-hidden border-2 border-red-200"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
                   <Trophy className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-1">Logros</h3>
@@ -145,14 +145,14 @@ export default function Dashboard({ setCurrentPage, addToast }) {
           <div className="grid md:grid-cols-2 gap-6">
             {familyData.children.map((child, idx) => (
               <div key={child.id} className="group relative card overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${idx === 0 ? 'from-blue-500/5 to-cyan-500/5' : 'from-purple-500/5 to-pink-500/5'} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${idx === 0 ? 'from-red-500/5 to-rose-500/5' : 'from-red-400/5 to-red-500/5'} opacity-0 group-hover:opacity-100 transition-opacity`} />
                 <div className="relative">
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-bold text-gray-800">{child.name}</h3>
                       <p className="text-sm text-gray-600 mt-1">{child.age} años • {child.grade}</p>
                     </div>
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform ${idx === 0 ? 'bg-gradient-to-br from-blue-500 to-cyan-500' : 'bg-gradient-to-br from-purple-500 to-pink-500'}`}>
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-lg group-hover:scale-110 transition-transform ${idx === 0 ? 'bg-gradient-to-br from-red-500 to-rose-500' : 'bg-gradient-to-br from-red-400 to-red-500'}`}>
                       {child.name.charAt(0)}
                     </div>
                   </div>
@@ -215,9 +215,9 @@ export default function Dashboard({ setCurrentPage, addToast }) {
         </section>
 
         {/* Privacy Message */}
-        <div className="glass rounded-2xl p-6 text-center mb-4">
+        <div className="glass rounded-2xl p-6 text-center mb-4 border-2 border-red-200 bg-gradient-to-br from-red-50 to-rose-50">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <Heart className="w-5 h-5 text-red-500" />
+            <Heart className="w-5 h-5 text-red-600" />
             <p className="font-semibold text-gray-800">Tu privacidad es prioritaria</p>
           </div>
           <p className="text-sm text-gray-600">🔒 Datos no vendidos • Base privada por familia • Borrable cuando quieras</p>

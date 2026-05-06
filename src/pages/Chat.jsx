@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { chatExamples } from '../data/mockData'
-import { Send, Phone } from 'lucide-react'
+import { Send, Phone, Heart } from 'lucide-react'
 
-export default function Chat() {
+export default function Chat({ addToast }) {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
 
@@ -85,8 +85,11 @@ export default function Chat() {
                       </div>
                     </div>
 
-                    <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium">
-                      <Phone className="w-4 h-4" />
+                    <button
+                      onClick={() => addToast('Notificación enviada a los padres ✓', 'success')}
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium hover:bg-blue-50 px-3 py-2 rounded-lg transition"
+                    >
+                      <Heart className="w-4 h-4" />
                       Avisar a los padres
                     </button>
                   </div>

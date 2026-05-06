@@ -2,11 +2,12 @@ import { alerts as initialAlerts } from '../data/mockData'
 import { AlertCircle, CheckCircle, Shield, Brain, Clock, Apple } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Alerts() {
+export default function Alerts({ addToast }) {
   const [alerts, setAlerts] = useState(initialAlerts)
 
   const markAsRead = (id) => {
     setAlerts(alerts.map(a => a.id === id ? { ...a, read: true } : a))
+    addToast('Alerta marcada como revisada', 'success')
   }
 
   const typeIcons = {

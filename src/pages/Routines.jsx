@@ -2,13 +2,18 @@ import { dailyRoutine as initialRoutine } from '../data/mockData'
 import { Clock, Check } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Routines() {
+export default function Routines({ addToast }) {
   const [routine, setRoutine] = useState(initialRoutine)
 
   const toggleComplete = (index) => {
     const newRoutine = [...routine]
     newRoutine[index].completed = !newRoutine[index].completed
     setRoutine(newRoutine)
+
+    const message = newRoutine[index].completed
+      ? `✓ ${routine[index].activity} completada`
+      : `↶ ${routine[index].activity} desmarcada`
+    addToast(message, 'success')
   }
 
   const completed = routine.filter(r => r.completed).length

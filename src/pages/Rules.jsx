@@ -2,7 +2,7 @@ import { houseRules } from '../data/mockData'
 import { Search, Filter } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Rules() {
+export default function Rules({ addToast }) {
   const [selectedCategory, setSelectedCategory] = useState('Comida')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedHouse, setSelectedHouse] = useState('Casa principal')

@@ -1,8 +1,8 @@
 import { familyData, dailyRoutine, alerts } from '../data/mockData'
-import { MessageCircle, Clock, AlertCircle, Check, Heart, Sparkles } from 'lucide-react'
+import { MessageCircle, Clock, AlertCircle, Check, Heart, Sparkles, Users, BarChart3 } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Dashboard({ setCurrentPage }) {
+export default function Dashboard({ setCurrentPage, addToast }) {
   const [completedTasks, setCompletedTasks] = useState([0, 1, 2, 3])
 
   const toggleTask = (index) => {
@@ -77,6 +77,46 @@ export default function Dashboard({ setCurrentPage }) {
                 </div>
                 <p className="font-semibold text-gray-800">Alertas</p>
                 <p className="text-xs text-gray-500 mt-1">Novedades</p>
+              </div>
+            </button>
+          </div>
+        </section>
+
+        {/* Special Modes */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Modos especiales</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <button
+              onClick={() => {
+                setCurrentPage('caregivers')
+                addToast('Bienvenido al Modo Cuidador', 'success')
+              }}
+              className="group relative card overflow-hidden border-2 border-purple-200"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">Modo Cuidador</h3>
+                <p className="text-sm text-gray-600">Para niñeras, abuelos y cuidadores</p>
+              </div>
+            </button>
+
+            <button
+              onClick={() => {
+                setCurrentPage('summary')
+                addToast('Resumen diario cargado', 'success')
+              }}
+              className="group relative card overflow-hidden border-2 border-emerald-200"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg">
+                  <BarChart3 className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">Resumen Diario</h3>
+                <p className="text-sm text-gray-600">Análisis y recomendaciones</p>
               </div>
             </button>
           </div>
